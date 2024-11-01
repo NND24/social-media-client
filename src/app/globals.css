@@ -2,20 +2,141 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+}
+
+@media only screen and (max-width: 1099px) {
+  .hide-on-small-laptop {
+    display: none !important;
+  }
+
+  .show-on-small-laptop {
+    display: flex !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .hide-on-tablet-mobile {
+    display: none !important;
+  }
+
+  .show-on-tablet-mobile {
+    display: flex !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* HEADER */
+.header-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.header-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #5c5c5c4b;
+}
+
+.active-nav,
+.active-control {
+  position: relative;
+}
+
+.active-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background-color: #1b74e4;
+}
+
+.active-nav:hover {
+  background-color: transparent;
+}
+
+.active-nav svg,
+.active-control svg {
+  color: #1b74e4;
+}
+
+div[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 54px;
+  width: max-content;
+  z-index: 100;
+  font-size: 12px;
+  color: themed("mainColor");
+  background-color: themed("titleBgColor");
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
