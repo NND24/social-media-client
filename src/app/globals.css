@@ -140,3 +140,27 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* HOME NAV */
+.home-nav {
+  mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 17px, black 17px);
+  mask-size: 100% 20000px;
+  mask-position: left bottom;
+}
+
+.home-nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.home-nav::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #5c5c5c4b;
+}
+
+.home-nav:hover {
+  -webkit-mask-position: left top;
+}
+
+.home-nav .active {
+  height: 100%;
+}
